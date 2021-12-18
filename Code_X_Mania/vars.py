@@ -3,8 +3,10 @@
 from os import getenv, environ
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv('config.env')
 
+def getConfig(name: str):
+    return os.environ[name]
 
 class Var(object):
     API_ID = int(getenv('API_ID'))
@@ -32,9 +34,10 @@ class Var(object):
     DATABASE_URL = str(getenv('DATABASE_URL'))
     UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', None))
     BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001362659779")).split()))
+    
     try:
-    SHORTENER = getenv('SHORTENER')
-    SHORTENER_API = getenv('SHORTENER_API')
+    SHORTENER = getConfig('SHORTENER')
+    SHORTENER_API = getConfig('SHORTENER_API')
     if len(SHORTENER) == 0 or len(SHORTENER_API) == 0:
         raise KeyError
 except KeyError:
