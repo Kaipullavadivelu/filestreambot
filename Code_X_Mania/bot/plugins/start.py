@@ -35,7 +35,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="__𝓢𝓞𝓡𝓡𝓨, 𝓨𝓞𝓤 𝓐𝓡𝓔 𝓐𝓡𝓔 𝓑𝓐𝓝𝓝𝓔𝓓 𝓕𝓡𝓞𝓜 𝓤𝓢𝓘𝓝𝓖 𝓜𝓔. 𝓒ᴏɴᴛᴀᴄᴛ ᴛʜᴇ 𝓓ᴇᴠᴇʟᴏᴘᴇʀ__\n\n @codexmania **𝙃𝙚 𝙬𝙞𝙡𝙡 𝙝𝙚𝙡𝙥 𝙮𝙤𝙪**",
+                        text="**ʏᴏᴜ ʜᴀᴠᴇ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ.*",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
@@ -43,7 +43,7 @@ async def start(b, m):
             except UserNotParticipant:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="<i>JOIN @iPRIMEHUB CHANNEL TO USE ME 🔐</i>",
+                    text="**ᴊᴏɪɴ @MSPmoviesOffl ᴄʜᴀɴɴᴇʟ ᴛᴏ ᴜꜱᴇ ᴍᴇ🔐**",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
@@ -57,7 +57,7 @@ async def start(b, m):
             except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="<i>𝓢𝓸𝓶𝓮𝓽𝓱𝓲𝓷𝓰 𝔀𝓮𝓷𝓽 𝔀𝓻𝓸𝓷𝓰</i> <b> <a href='http://t.me/codexmania'>CLICK HERE FOR SUPPORT </a></b>",
+                    text="<i>ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ</i> <b> <a href='http://t.me/MSPbotsSupport'>CLICK HERE FOR SUPPORT </a></b>",
                     parse_mode="HTML",
                     disable_web_page_preview=True)
                 return
@@ -71,8 +71,8 @@ async def start(b, m):
 <b>Dont Spam.</b>""",
             parse_mode="HTML",
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton('Owner', url=f"https://t.me/adarsh_goel"),
-                                                                                       InlineKeyboardButton('Follow ', url='https://github.com/code-x-mania') ] ]  ) )
+            reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton('Owner', url=f"https://t.me/BaashaBaii"),
+                                                                                       InlineKeyboardButton('Movie Request', url='https://t.me/MSPdiscussion') ] ]  ) )
                                                                                        
                                                                                        
                                                                             
@@ -83,7 +83,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="**Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Qᴜɪᴄᴋʟʏ ᴄᴏɴᴛᴀᴄᴛ** @adarsh_status_bot",
+                        text="**Sᴏʀʀʏ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ.**",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
