@@ -65,13 +65,9 @@ async def private_receive_handler(c: Client, m: Message):
     try:
         log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
         stream_link = Var.URL + 'watch/' + str(log_msg.message_id)
-        short_url = get_short_url(stream_link) 
-        if shortlink:
-            stream_link = short_url
+        stream_link = short_url(surl)
         online_link = Var.URL + 'download/'+ str(log_msg.message_id) 
-        short_url1 = get_short_url(online_link)
-        if shortlinka:
-            online_link = short_url1
+        online_link = short_url(durl)
         
         file_size = None
         if m.video:
@@ -104,14 +100,14 @@ async def private_receive_handler(c: Client, m: Message):
 
 """
 
-        await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Dᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
+        await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Dᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** {surl}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
         await m.reply_text(
-            text=msg_text.format(file_name, file_size, online_link, stream_link),
+            text=msg_text.format(file_name, file_size, durl, surl),
             parse_mode="HTML", 
             quote=True,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🖥STREAM", url=stream_link), #Stream Link
-                                                InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=online_link)]]) #Download Link
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🖥STREAM", url=surl), #Stream Link
+                                                InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=durl)]]) #Download Link
         )
     except FloodWait as e:
         print(f"Sleeping for {str(e.x)}s")
@@ -126,10 +122,12 @@ async def channel_receive_handler(bot, broadcast):
         return
     try:
         log_msg = await broadcast.forward(chat_id=Var.BIN_CHANNEL)
-        stream_link = Var.URL + 'watch/' + str(log_msg.message_id) 
-        online_link = Var.URL + 'download/' + str(log_msg.message_id) 
+        stream_link = Var.URL + 'watch/' + str(log_msg.message_id)
+        stream_link = short_url(surl)
+        online_link = Var.URL + 'download/'+ str(log_msg.message_id) 
+        online_link = short_url(durl)
         await log_msg.reply_text(
-            text=f"**Cʜᴀɴɴᴇʟ Nᴀᴍᴇ:** `{broadcast.chat.title}`\n**Cʜᴀɴɴᴇʟ ID:** `{broadcast.chat.id}`\n**Rᴇǫᴜᴇsᴛ ᴜʀʟ:** {stream_link}",
+            text=f"**Cʜᴀɴɴᴇʟ Nᴀᴍᴇ:** `{broadcast.chat.title}`\n**Cʜᴀɴɴᴇʟ ID:** `{broadcast.chat.id}`\n**Rᴇǫᴜᴇsᴛ ᴜʀʟ:** {surl}",
             quote=True,
             parse_mode="Markdown"
         )
@@ -138,8 +136,8 @@ async def channel_receive_handler(bot, broadcast):
             message_id=broadcast.message_id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🖥STREAM ", url=stream_link),
-                     InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=online_link)] 
+                    [InlineKeyboardButton("🖥STREAM ", url=surl),
+                     InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=durl)] 
                 ]
             )
         )
