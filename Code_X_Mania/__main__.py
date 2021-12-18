@@ -26,15 +26,6 @@ files = glob.glob(ppath)
 
 loop = asyncio.get_event_loop()
 
-try:
-    SHORTENER = getConfig('SHORTENER')
-    SHORTENER_API = getConfig('SHORTENER_API')
-    if len(SHORTENER) == 0 or len(SHORTENER_API) == 0:
-        raise KeyError
-except KeyError:
-    SHORTENER = None
-    SHORTENER_API = None
-
 async def start_services():
     print('\n')
     print('------------------- Initalizing Telegram Bot -------------------')
