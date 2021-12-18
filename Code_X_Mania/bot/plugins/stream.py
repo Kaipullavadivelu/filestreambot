@@ -3,6 +3,7 @@
 import asyncio
 from Code_X_Mania.bot import StreamBot
 from Code_X_Mania.utils.database import Database
+from Code_X_Mania.utils.short import short_url
 from Code_X_Mania.utils.human_readable import humanbytes
 from Code_X_Mania.vars import Var
 from pyrogram import filters, Client
@@ -64,13 +65,9 @@ async def private_receive_handler(c: Client, m: Message):
     try:
         log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
         stream_link = Var.URL + 'watch/' + str(log_msg.message_id)
-        shortlink = get_shortlink(stream_link) 
-        if shortlink:
-            stream_link = shortlink
+        stream_link = short_url(wurl)
         online_link = Var.URL + 'download/'+ str(log_msg.message_id) 
-        shortlinka = get_shortlink(online_link)
-        if shortlinka:
-            online_link = shortlinka
+        online_link = short_url(durl)
         
         file_size = None
         if m.video:
@@ -109,8 +106,8 @@ async def private_receive_handler(c: Client, m: Message):
             parse_mode="HTML", 
             quote=True,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🖥STREAM", url=stream_link), #Stream Link
-                                                InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=online_link)]]) #Download Link
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🖥STREAM", url=wurl), #Stream Link
+                                                InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=durl)]]) #Download Link
         )
     except FloodWait as e:
         print(f"Sleeping for {str(e.x)}s")
