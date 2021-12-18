@@ -4,7 +4,7 @@ import base64
 import pyshorteners
 from urllib.parse import quote
 from urllib3 import disable_warnings
-from Code_X_Mania.vars import SHORTENER, SHORTENER_API
+from Code_X_Mania import SHORTENER, SHORTENER_API
 
 def short_url(longurl):
     if "shorte.st" in SHORTENER:
